@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    <h2 class="mb-3">{{message}}</h2>
+    <div class="mb-3">
+        <a href="{% url 'chapter06:classrooms_list'%}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+    <form action="{% url 'chapter06:classrooms_edit' id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ classroom.name.errors }}
+            {{ classroom.name.label_tag }}
+            {{ classroom.name }}
+        </div>
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+</div>
+{% endblock %}

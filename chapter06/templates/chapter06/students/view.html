@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    <div class="mb-3">
+        <a href="{% url 'chapter06:students_list'%}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+    <div class="container border border-bottom-0">
+        <div class="row border-bottom justify-content-start">
+            <div class="col-2 bg-light p-2 border-right">id</div>
+            <div class="col-10">{{form.id}}</div>
+        </div>
+        <div class="row border-bottom justify-content-start">
+            <div class="col-2 bg-light p-2 border-right">name</div>
+            <div class="col-10 p-2">{{form.name}}</div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-2 bg-light p-2 border-right">age</div>
+            <div class="col-10 p-2">{{form.age}}</div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-2 bg-light p-2 border-right">classroom</div>
+            <div class="col-10 p-2">{{form.class_room.name}}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

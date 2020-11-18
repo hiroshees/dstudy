@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h1>{{title}}</h1>
+        <form action="{% url 'chapter02:work05b'%}" method="POST">
+            <div>
+                <label for="name">名前：</label><input type="text" id="name" name="name">
+            </div>
+            <div>
+                <label for="age">年齢：</label><input type="text" id="age" name="age">
+            </div>
+            <div>
+                {%csrf_token%}
+                <input type="submit" value="送信">
+            </div>
+        </form>
+    </body>
+</html>

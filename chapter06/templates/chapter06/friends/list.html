@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    <h2 class="mb-3">{{message}}</h2>
+    <div class="mb-3">
+        <a href="{% url "chapter06:friends_create" %}" class="btn btn-primary">新規作成</a>
+    </div>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>GENDER</th>
+            <th>MAIL</th>
+            <th>AGE</th>
+            <th>BIRTHDAY</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for f in friends %}
+        <tr>
+            <td>{{f.id}}</td>
+            <td>{{f.name}}</td>
+            <td>{{f.get_gender_display}}</td>
+            <td>{{f.mail}}</td>
+            <td>{{f.age}}</td>
+            <td>{{f.birthday|date:'Y年m月d日'}}</td>
+            <td>
+                <a href="{% url 'chapter06:friends_view' f.id %}">表示</a>
+            </td>
+            <td>
+                <a href="{% url 'chapter06:friends_edit' f.id %}">編集</a>
+            </td>
+            <td>
+                <a href="{% url 'chapter06:friends_delete' f.id %}">削除</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

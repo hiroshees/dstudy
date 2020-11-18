@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{{title}}</h1>
+    <h2>{{message}}</h2>
+    <div>名前：{{ form.name.value }}</div>
+    <div>メール：{{ form.mail.value }}</div>
+    <div>年齢：{{ form.age.value }}</div>
+    <div>
+        <a href="{% url 'chapter04:work02' %}">戻る</a>
+    </div>
+</div>
+{% endblock %}

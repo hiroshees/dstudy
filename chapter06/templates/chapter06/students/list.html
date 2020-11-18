@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    <h2 class="mb-3">{{message}}</h2>
+    <div class="mb-3">
+        <a href="{% url "chapter06:students_create" %}" class="btn btn-primary">新規作成</a>
+    </div>
+    <div class="container border border-bottom-0">
+        <div class="row border-bottom">
+            <div class="col-2 bg-secondary text-white p-2 border-right">id</div>
+            <div class="col-3 bg-secondary text-white p-2 border-right">name</div>
+            <div class="col-3 bg-secondary text-white p-2 border-right">age</div>
+            <div class="col-2 bg-secondary text-white p-2 border-right">classroom</div>
+            <div class="col-1 bg-secondary text-white p-2 border-right">edit</div>
+            <div class="col-1 bg-secondary text-white p-2">view</div>
+        </div>
+        {% for o in students %}
+        <div class="row border-bottom">
+            <div class="col-2 bg-light p-2 border-right">{{o.id}}</div>
+            <div class="col-3 p-2 border-right">{{o.name}}</div>
+            <div class="col-3 p-2 border-right">{{o.age}}</div>
+            <div class="col-2 p-2 border-right">{{o.class_room.name}}</div>
+            <div class="col-1 p-2 border-right">
+                <a href="{% url 'chapter06:students_edit' o.id %}">編集</a>
+            </div>
+            <div class="col-1 p-2">
+                <a href="{% url 'chapter06:students_view' o.id %}">表示</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <h1>{{title}}</h1>
+        <form action="{% url 'chapter02:work07'%}" method="POST">
+            <div>
+                <label for="city">好きな街：</label>
+                <select id="city" name="city">
+                    <option value="Tokyo">東京</option>
+                    <option value="NewYork">ニューヨーク</option>
+                    <option value="London">ロンドン</option>
+                    <option value="Paris">パリ</option>
+                </select>
+            </div>
+            <div>
+                {%csrf_token%}
+                <input type="submit" value="送信">
+            </div>
+        </form>
+        <div>好きな街：{{data.city}}</div>
+    </body>
+</html>

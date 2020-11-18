@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    {% include "elements/flash.html" %}
+    <div class="mb-3">
+        <a href="{% url 'chapter06:monster_types_list'%}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+    <h2>{{monster_types.name}}　のモンスター一覧</h2>
+
+
+    <div class="container border border-bottom-0">
+        <div class="row border-bottom">
+            <div class="col-3 bg-secondary text-white p-2 border-right">id</div>
+            <div class="col-3 bg-secondary text-white p-2 border-right">name</div>
+            <div class="col-3 bg-secondary text-white p-2 border-right">hp</div>
+            <div class="col-3 bg-secondary text-white p-2">level</div>
+        </div>
+        {% for m in monster_types.monster_set.all %}
+        <div class="row border-bottom">
+            <div class="col-3 bg-light p-2 border-right">{{m.id}}</div>
+            <div class="col-3 p-2 border-right">{{m.name}}</div>
+            <div class="col-3 p-2 border-right">{{m.hp}}</div>
+            <div class="col-3 p-2">{{m.level}}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

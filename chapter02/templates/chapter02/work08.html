@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <h1>{{title}}</h1>
+        <form action="{% url 'chapter02:work08'%}" method="POST">
+            <div>
+                好きな音楽：
+                <label for="pop">
+                    <input type="radio" id="pop" name="music" value="pop">ポップ
+                </label>
+                <label for="rock">
+                    <input type="radio" id="rock" name="music" value="rock">ロック
+                </label>
+                <label for="anime">
+                    <input type="radio" id="anime" name="music" value="anime">アニメソング
+                </label>
+                <label for="idol">
+                    <input type="radio" id="idol" name="music" value="idol">アイドルソング
+                </label>
+            </div>
+            <div>
+                {%csrf_token%}
+                <input type="submit" value="送信">
+            </div>
+        </form>
+        <div>好きな音楽：{{data.music}}</div>
+    </body>
+</html>

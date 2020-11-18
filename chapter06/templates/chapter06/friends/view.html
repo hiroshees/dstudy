@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    <h2 class="mb-3">{{message}}</h2>
+    <div class="mb-3">
+        <a href="{% url 'chapter06:friends_list'%}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{friend.id}}</td>
+        </tr>
+        <tr>
+            <th>NAME</th>
+            <td>{{friend.name}}</td>
+        </tr>
+        <tr>
+            <th>GENDER</th>
+            <td>{{friend.get_gender_display}}</td>
+        </tr>
+        <tr>
+            <th>MAIL</th>
+            <td>{{friend.mail}}</td>
+        </tr>
+        <tr>
+            <th>AGE</th>
+            <td>{{friend.age}}</td>
+        </tr>
+        <tr>
+            <th>BIRTHDAY</th>
+            <td>{{friend.birthday}}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

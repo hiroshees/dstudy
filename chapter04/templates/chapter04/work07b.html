@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{{title}}</h1>
+    <h2>{{message}}さん、こんにちは</h2>
+    <div>名前：{{ form.name.value }}</div>
+    <div>好きな映画：
+    {% for m in form.movie.value %}
+        {{ m }},
+    {% endfor %}
+    </div>
+    <div>
+        <a href="{% url 'chapter04:work07' %}">戻る</a>
+    </div>
+</div>
+{% endblock %}

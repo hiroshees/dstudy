@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <h1>{{title}}</h1>
+        <form action="{% url 'chapter02:work09'%}" method="POST">
+            <div>
+                好きな映画：
+                <label for="action">
+                    <input type="checkbox" id="action" name="movie" value="action">アクション
+                </label>
+                <label for="sf">
+                    <input type="checkbox" id="sf" name="movie" value="sf">SF
+                </label>
+                <label for="comedy">
+                    <input type="checkbox" id="comedy" name="movie" value="comedy">コメディ
+                </label>
+                <label for="suspence">
+                    <input type="checkbox" id="suspence" name="movie" value="suspence">サスペンス
+                </label>
+            </div>
+            <div>
+                {%csrf_token%}
+                <input type="submit" value="送信">
+            </div>
+        </form>
+        <div>好きな映画：
+        {% for value in data.movie %}
+            <div>{{value}}</div>
+        {% endfor %}
+        </div>
+    </body>
+</html>

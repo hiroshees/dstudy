@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{{title}}</h1>
+    <h2>{{message}}</h2>
+    <form action="{% url 'chapter04:work07' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name.errors }}
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            {{ form.movie.label_tag }}
+            {{ form.movie.errors }}
+            <div>
+                {% for m in form.movie %}
+                    <div class="form-check form-check-inline">
+                        {{ m.tag }}
+                        <label for="{{ m.id_for_label }}" class="form-check-label">{{ m.choice_label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+</div>
+{% endblock %}

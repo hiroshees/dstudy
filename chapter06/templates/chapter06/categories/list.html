@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    {% include "elements/flash.html" %}
+    <div class="mb-3">
+        <a href="{% url "chapter06:categories_create" %}" class="btn btn-primary">新規作成</a>
+    </div>
+    <div class="container border border-bottom-0">
+        <div class="row border-bottom">
+            <div class="col-4 bg-secondary text-white p-2 border-right">id</div>
+            <div class="col-4 bg-secondary text-white p-2 border-right">name</div>
+            <div class="col-4 bg-secondary text-white p-2">edit</div>
+        </div>
+    
+        {% for c in categories %}
+        <div class="row border-bottom">
+            <div class="col-4 bg-light p-2 border-right">{{c.id}}</div>
+            <div class="col-4 p-2 border-right">{{c.name}}</div>
+            <div class="col-4 p-2">
+                <a href="{% url 'chapter06:categories_edit' c.id %}">編集</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

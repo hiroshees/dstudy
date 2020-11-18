@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">{{title}}</h1>
+    <h2 class="mb-3">{{message}}</h2>
+     <div class="mb-3">
+        <a href="{% url 'chapter06:friends_list'%}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+    <form action="{% url 'chapter06:friends_create' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ friend.name.errors }}
+            {{ friend.name.label_tag }}
+            {{ friend.name }}
+        </div>
+        <div class="form-group">
+            {{ friend.mail.errors }}
+            {{ friend.mail.label_tag }}
+            {{ friend.mail }}
+        </div>
+        <div class="form-group">
+            {{ friend.gender.errors }}
+            {{ friend.gender.label_tag }}
+            {{ friend.gender }}
+        </div>
+        <div class="form-group">
+            {{ friend.age.errors }}
+            {{ friend.age.label_tag }}
+            {{ friend.age }}
+        </div>
+        <div class="form-group">
+            {{ friend.birthday.errors }}
+            {{ friend.birthday.label_tag }}
+            {{ friend.birthday }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+</div>
+{% endblock %}

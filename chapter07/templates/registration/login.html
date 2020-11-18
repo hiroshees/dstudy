@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    {% include "elements/flash.html" %}
+    <div id="logreg-forms">
+        <form action="{% url 'chapter07:login' %}" method="post" class="form-signin" novalidate>
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">ログイン</h1>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>&nbsp;ログイン</button>
+            <a href="#" id="forgot_pswd">パスワードを忘れた場合</a>
+            <hr>
+            <a href="{% url 'chapter07:register'%}" id="forgot_pswd">新規ユーザ登録</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
